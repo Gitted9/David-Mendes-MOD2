@@ -35,7 +35,6 @@ class Game:
         while self.running:
             if not self.playing:
                 self.show_menu()
-        
         pygame.display.quit()
         pygame.quit()
 
@@ -112,11 +111,19 @@ class Game:
                 self.player.has_power_up = False
                 self.player.type = DEFAULT_TYPE
 
+    def handle_events_on_menu(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.playing = False
+                self.running = False
+            elif event.type == pygame.KEYDOWN:
+                self.run()
+
     def show_menu(self):
         self.screen.fill((255, 255, 255))
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
-        if self.def_count == 0:
+        if self.death_count == 0:
             draw_message_component("APERTE QUALQUER TECLA PARA INICIAR", self.screen)
         else:
             draw_message_component("PRESSIONE QUALQUER TECLA PARA REINICIAR", self.screen, pos_y_center=half_screen_height + 140)
