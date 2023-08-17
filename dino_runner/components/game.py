@@ -2,7 +2,7 @@ import pygame
 
  
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, BACKGIMAGE
 
 from dino_runner.components.dinosaur import Dinosaur
 
@@ -70,6 +70,7 @@ class Game:
     def draw(self):
         self.clock.tick(FPS)
         self.screen.fill((255, 255, 255))
+        self.screen.blit(BACKGIMAGE, (0, 0))
         self.draw_background()
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
@@ -126,12 +127,13 @@ class Game:
         if self.death_count == 0:
             draw_message_component("APERTE QUALQUER TECLA PARA INICIAR", self.screen)
         else:
-            draw_message_component("PRESSIONE QUALQUER TECLA PARA REINICIAR", self.screen, pos_y_center=half_screen_height + 140)
+            draw_message_component("PRESSIONE QUALQUER TECLA PARA REINICIAR", self.screen, pos_y_center=half_screen_height + 200)
             draw_message_component(
-                f"SUA PONTUAÇÃO: {self.score}",
+                f"VOCÊ CONSEGUIU PERCORRER {self.score} METROS",
                 self.screen,
                 pos_y_center=half_screen_width - 100
             )
+            draw_message_component(f"ACIDENTES: {self.death_count}", self.screen, pos_y_center=half_screen_height + 100)
             self.screen.blit(ICON, (half_screen_width - 40, half_screen_height - 30))
             
         pygame.display.flip()

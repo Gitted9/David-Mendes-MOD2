@@ -7,6 +7,7 @@ class ObstacleManager:
 
     def __init__(self):
         self.obstacles = []
+        self.image = []
 
     def update(self, game):
         image_list = [Cactus(), Bird()]
@@ -16,6 +17,7 @@ class ObstacleManager:
             obstacle.update(game.game_speed, self.obstacles)
             if game.player.dino_rect.colliderect(obstacle.rect):
                 if not game.player.has_power_up:
+                    
                     pygame.time.delay(500)
                     game.playing = False
                     game.death_count += 1

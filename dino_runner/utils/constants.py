@@ -11,6 +11,10 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
 
+BACKGIMAGE = pygame.image.load(os.path.join(IMG_DIR, 'Other/background.png'))
+BACKGIMAGE = pygame.transform.scale(BACKGIMAGE, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
+
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
