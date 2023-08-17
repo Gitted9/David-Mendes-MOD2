@@ -91,9 +91,9 @@ class Game:
 
     def draw_score(self):
         draw_message_component(
-            f"PONTUAÇÃO: {self.score}",
+            f"METRAGEM PERCORRIDA: {self.score}",
             self.screen, 
-            pos_x_center= 1000,
+            pos_x_center= 870,
             pos_y_center= 50
         )
     
@@ -102,7 +102,7 @@ class Game:
             time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
             if time_to_show >= 0:
                 draw_message_component(
-                    f"{self.player.type.capitalize()} FALTAM {time_to_show} SEGUNDOS",
+                    f"{self.player.type.capitalize()} acaba em {time_to_show} segundos",
                     self.screen,
                     font_size= 18,
                     pos_x_center= 500,
@@ -125,9 +125,9 @@ class Game:
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
         if self.death_count == 0:
-            draw_message_component("APERTE QUALQUER TECLA PARA INICIAR", self.screen)
+            draw_message_component("PRESSIONE QUALQUER TECLA PARA CORRER", self.screen)
         else:
-            draw_message_component("PRESSIONE QUALQUER TECLA PARA REINICIAR", self.screen, pos_y_center=half_screen_height + 200)
+            draw_message_component("PRESSIONE QUALQUER TECLA PARA RECOMEÇAR", self.screen, pos_y_center=half_screen_height + 200)
             draw_message_component(
                 f"VOCÊ CONSEGUIU PERCORRER {self.score} METROS",
                 self.screen,
